@@ -6,7 +6,7 @@ st.header('Lanzar una moneda')
 
 chart = st.line_chart([0.5])
 
-def toss_coin(n): # función que emula el lanzamiento de una moneda
+def toss_coin(n):
 
     trial_outcomes = scipy.stats.bernoulli.rvs(p=0.5, size=n)
 
@@ -23,6 +23,13 @@ def toss_coin(n): # función que emula el lanzamiento de una moneda
         time.sleep(0.05)
 
     return mean
+
+number_of_trials = st.slider('¿Número de intentos?', 1, 1000, 10)
+start_button = st.button('Ejecutar')
+
+if start_button:
+    st.write(f'Experimento con {number_of_trials} intentos en curso.')
+    mean = toss_coin(number_of_trials)
 
 number_of_trials = st.slider('¿Número de intentos?', 1, 1000, 10)
 start_button = st.button('Ejecutar')
